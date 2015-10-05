@@ -9,6 +9,6 @@ bootstrap.mlockall: true
 discovery.zen.ping.timeout: 5s
 discovery.zen.ping.unicast.hosts: [%PLACEHOLDER_NODE_NAMES%]
 http.cors.enabled: true
-couchbase.password: %PLACEHOLDER_CB_USERNAME%
-couchbase.username: %PLACEHOLDER_CB_PASSWORD%
+couchbase.username: %PLACEHOLDER_CB_USERNAME%
+couchbase.password: %PLACEHOLDER_CB_PASSWORD%
 

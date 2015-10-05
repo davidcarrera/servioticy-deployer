@@ -12,3 +12,8 @@ mkdir -p $CB_INSTALL_DIR.dist
 
 dpkg-deb -x $FILE_REPOSITORY/$CB_FILE $CB_INSTALL_DIR.dist
 ln -s $CB_INSTALL_DIR.dist/opt/couchbase $CB_INSTALL_DIR
+cd $CB_INSTALL_DIR
+./bin/install/reloc.sh `pwd`
+
+
+cd $ROOT
