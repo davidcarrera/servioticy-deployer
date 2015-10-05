@@ -1,0 +1,1 @@
+rm -rf $CB_INSTALL_PATH
