@@ -29,6 +29,7 @@ perl -pe "s/%PLACEHOLDER_ES_CLUSTER_NAME%/$ES_CLUSTER_NAME/g" | \
 perl -pe "s/%PLACEHOLDER_CB_USERNAME%/$CB_USERNAME/g" | \
 perl -pe "s/%PLACEHOLDER_CB_PASSWORD%/$CB_PASSWORD/g" | \
 perl -pe "s/%PLACEHOLDER_ES_LOG_DIR%/$log_dir/g" | \
+perl -pe "s/%PLACEHOLDER_ES_SHARD_REPLICAS%/$ES_SHARD_REPLICAS/g" | \
 perl -pe "s/%PLACEHOLDER_ES_DATA_DIR%/$data_dir/g" > $ES_INSTALL_DIR/config/elasticsearch.yml
 
 cd $ROOT
