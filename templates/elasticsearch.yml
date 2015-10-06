@@ -2,7 +2,7 @@ cluster.name: %PLACEHOLDER_ES_CLUSTER_NAME%
 node.name: "%PLACEHOLDER_HOSTNAME%"
 node.master: true
 node.data: true
-index.number_of_replicas: 3
+index.number_of_replicas: %PLACEHOLDER_ES_SHARD_REPLICAS%
 path.data: %PLACEHOLDER_ES_DATA_DIR%
 path.logs: %PLACEHOLDER_ES_LOG_DIR%
 bootstrap.mlockall: true
