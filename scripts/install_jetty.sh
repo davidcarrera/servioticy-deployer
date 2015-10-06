@@ -8,6 +8,7 @@ fi
 
 . $ROOT/env.sh
 
+mkdir -p $SERVIOTICY_INSTALL_DIR
 cd $SERVIOTICY_INSTALL_DIR
 tar xzf $FILE_REPOSITORY/$JETTY_FILE
 folder=`ls -1 | grep jetty- | head -1`
