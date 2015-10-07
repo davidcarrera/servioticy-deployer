@@ -11,7 +11,7 @@ fi
 
 cd $CB_INSTALL_DIR
 
-cho "Create buckets"
+echo "Create buckets"
 echo "--------------------------------------------------------"
 ./bin/couchbase-cli bucket-create \
     --bucket-type=couchbase \
