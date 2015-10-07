@@ -13,11 +13,11 @@ tar xzf $FILE_REPOSITORY/$ZK_FILE
 folder=`ls -1 | grep zookeeper | head -1`
 ln -s $folder $ZK_INSTALL_DIR
 
-zkserversconf = ""
-servercount = 1
+zkserversconf=""
+servercount=1
 while IFS='' read -r line || [[ -n "$line" ]]; do
-    zkserversconf = "$zkserversconf\nserver.$servercount=$line:2888:3888"
-    servercount = servercount + 1
+    zkserversconf="$zkserversconf\nserver.$servercount=$line:2888:3888"
+    servercount=servercount + 1
 done < "$MACHINE_FILE_ZK"
 
 cat $ZK_CONF_TEMPLATE_FILE | \
