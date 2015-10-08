@@ -8,6 +8,8 @@ fi
 
 . $ROOT/env.sh
 
+echo "Installing Zookeeper"
+mkdir -p $SERVIOTICY_INSTALL_DIR
 cd $SERVIOTICY_INSTALL_DIR
 tar xzf $FILE_REPOSITORY/$ZK_FILE
 folder=`ls -1 | grep zookeeper | head -1`
