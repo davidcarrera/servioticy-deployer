@@ -40,9 +40,9 @@ done < "$MACHINE_FILES_FOLDER/$MACHINE_FILE_ZK"
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_ZK  "cd $ROOT; $SCRIPTS_FOLDER/install_zk.sh"
 
 servercount=1
-dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_KAFKA "mkdir -p $KAFKA_INSTALL_DIR"
+dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_KAFKA "mkdir -p $$SERVIOTICY_INSTALL_DIR"
 while IFS='' read -r line || [[ -n "$line" ]]; do
-    dsh -m $line "echo $servercount > $KAFKA_INSTALL_DIR/id"
+    dsh -m $line "echo $servercount > $$SERVIOTICY_INSTALL_DIR/kafkaid"
     servercount=$((servercount+1))
 done < "$MACHINE_FILES_FOLDER/$MACHINE_FILE_KAFKA"
 

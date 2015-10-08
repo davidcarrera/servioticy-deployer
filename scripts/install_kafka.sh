@@ -34,7 +34,7 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
     fi
 done < "$MACHINE_FILES_FOLDER/$MACHINE_FILE_ZK"
 
-kafka_id=$(head -n 1 $KAFKA_INSTALL_DIR/id)
+kafka_id=$(head -n 1 $SERVIOTICY_INSTALL_DIR/kafkaid)
 
 cat $KAFKA_CONF_TEMPLATE_FILE | \
 perl -pe "s/%PLACEHOLDER_KAFKA_BROKER_ID%/$kafka_id/g" | \
