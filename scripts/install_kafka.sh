@@ -13,7 +13,7 @@ mkdir -p $SERVIOTICY_INSTALL_DIR
 mkdir -p $SERVIOTICY_INSTALL_DIR/kafka_logs
 cd $SERVIOTICY_INSTALL_DIR
 tar xzf $FILE_REPOSITORY/$KAFKA_FILE
-folder=`ls -1 | grep zookeeper | head -1`
+folder=`ls -1 | grep kafka | head -1`
 ln -s $folder $KAFKA_INSTALL_DIR
 
 zkservers=""
