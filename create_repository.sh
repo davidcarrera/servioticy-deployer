@@ -77,4 +77,13 @@ else
 	echo Verified file: $ZK_FILE
 fi
 
+count=`md5sum -c $KAFKA_FILE_MD5 | grep -v OK | wc -l`
+if [ $count -gt 0 ]
+then
+ 	echo Corrupt or missing file found. Downloading $KAFKA_FILE_WGET/$KAFKA_FILE
+	wget -q $KAFKA_FILE_WGET/$KAFKA_FILE -O $FILE_REPOSITORY/$ZK_FILE
+else
+	echo Verified file: $KAFKA_FILE
+fi
+
 cd $ROOT
