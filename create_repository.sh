@@ -22,7 +22,7 @@ wget -q $JETTY_FILE_WGET/$JETTY_FILE_MD5 -O $FILE_REPOSITORY/$JETTY_FILE_MD5.rem
 wget -q $ES_FILE_WGET/$ES_FILE_SHA1 -O $FILE_REPOSITORY/$ES_FILE_SHA1
 echo "$JDK8_MD5 $JDK8_FILE" > $FILE_REPOSITORY/$JDK8_FILE_MD5
 wget -q $ZK_FILE_WGET/$ZK_FILE_MD5 -O $FILE_REPOSITORY/$ZK_FILE_MD5
-wget -q $KAFKA_FILE_WGET/$KAFKA_FILE_MD5 -O $FILE_REPOSITORY/$KAFKA_FILE_MD5
+echo "$KAFKA_MD5 $KAFKA_FILE" > $FILE_REPOSITORY/$KAFKA_FILE_MD5
 
 perl -pe "s/$/ $CB_FILE/g" $FILE_REPOSITORY/$CB_FILE_MD5.remove | head -1> $FILE_REPOSITORY/$CB_FILE_MD5
 perl -pe "s/$/ $JETTY_FILE/g" $FILE_REPOSITORY/$JETTY_FILE_MD5.remove | head -1> $FILE_REPOSITORY/$JETTY_FILE_MD5
@@ -80,13 +80,13 @@ else
 	echo Verified file: $ZK_FILE
 fi
 
-#count=`md5sum -c $KAFKA_FILE_MD5 | grep -v OK | wc -l`
-#if [ $count -gt 0 ]
-#then
-# 	echo Corrupt or missing file found. Downloading $KAFKA_FILE_WGET/$KAFKA_FILE
+count=`md5sum -c $KAFKA_FILE_MD5 | grep -v OK | wc -l`
+if [ $count -gt 0 ]
+then
+ 	echo Corrupt or missing file found. Downloading $KAFKA_FILE_WGET/$KAFKA_FILE
 	wget -q $KAFKA_FILE_WGET/$KAFKA_FILE -O $FILE_REPOSITORY/$KAFKA_FILE
-#else
-#	echo Verified file: $KAFKA_FILE
-#fi
+else
+	echo Verified file: $KAFKA_FILE
+fi
 
 cd $ROOT
