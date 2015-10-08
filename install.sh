@@ -27,5 +27,14 @@ $SCRIPTS_FOLDER/wait_for_couchbase_up.sh
 $SCRIPTS_FOLDER/create_views.sh #&> /dev/null
 $SCRIPTS_FOLDER/create_xdcr.sh #&> /dev/null
 
+
+dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_ZK "mkdir -p $ZK_DATA_DIR"
+zkserversconf=""
+servercount=1
+while IFS='' read -r line || [[ -n "$line" ]]; do
+    dsh -m $line "echo $servercount > $ZK_DATA_DIR/myid"
+    servercount=$((servercount+1))
+done < "$MACHINE_FILES_FOLDER/$MACHINE_FILE_ZK"
+
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_ZK  "cd $ROOT; $SCRIPTS_FOLDER/install_zk.sh"
 
