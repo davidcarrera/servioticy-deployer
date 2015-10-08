@@ -8,6 +8,8 @@ fi
 
 . $ROOT/env.sh
 
+echo "Installing JDK"
+mkdir -p $SERVIOTICY_INSTALL_DIR
 cd $SERVIOTICY_INSTALL_DIR
 tar xzf $FILE_REPOSITORY/$JDK8_FILE
 folder=`ls -1 | grep jdk1.8 | head -1`

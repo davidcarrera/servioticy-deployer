@@ -8,7 +8,7 @@ fi
 
 . $ROOT/env.sh
 
-cd $JETTY_INSTALL_DIR
+cd $ZK_INSTALL_DIR
 ./bin/zkServer.sh start-foreground
 cd $ROOT
 
