@@ -9,7 +9,7 @@ fi
 . $ROOT/env.sh
 
 cd $KAFKA_INSTALL_DIR
-./bin/kafka-server-start.sh -daemon ../config/server.properties
+./bin/kafka-server-start.sh -daemon $KAFKA_INSTALL_DIR/config/server.properties
 cd $ROOT
 
 exit 0
