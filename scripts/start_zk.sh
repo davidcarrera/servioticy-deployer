@@ -9,7 +9,7 @@ fi
 . $ROOT/env.sh
 
 cd $ZK_INSTALL_DIR
-./bin/zkServer.sh start-foreground
+./bin/zkServer.sh start
 cd $ROOT
 
 exit 0
