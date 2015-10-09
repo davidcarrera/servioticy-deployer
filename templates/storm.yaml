@@ -16,7 +16,7 @@
 
 ########### These MUST be filled in for a storm configuration
 storm.zookeeper.servers:
-    %PLACEHOLDER_STORM_ZK_SERVERS
+%PLACEHOLDER_STORM_ZK_SERVERS
 
 storm.local.dir: %PLACEHOLDER_STORM_DIR%
 
