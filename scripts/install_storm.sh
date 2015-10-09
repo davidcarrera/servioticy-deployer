@@ -27,6 +27,6 @@ cat $STORM_CONF_TEMPLATE_FILE | \
 perl -pe "s/%PLACEHOLDER_STORM_ZK_SERVERS%/$zkservers/g" | \
 perl -pe "s/%PLACEHOLDER_STORM_NIMBUS%/$nimbushost/g" | \
 perl -pe "s|%PLACEHOLDER_STORM_CLASSPATH%|$JDK8_INSTALL_DIR/lib:$STORM_INSTALL_DIR/lib|g" | \
-perl -pe "s|%PLACEHOLDER_STORM_DIR%|$SERVIOTICY_INSTALL_DIR/storm_dir/g" > $STORM_INSTALL_DIR/conf/storm.yaml
+perl -pe "s|%PLACEHOLDER_STORM_DIR%|$SERVIOTICY_INSTALL_DIR/storm_dir|g" > $STORM_INSTALL_DIR/conf/storm.yaml
 
 cd $ROOT
