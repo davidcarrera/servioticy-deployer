@@ -66,7 +66,6 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
     if [ "$numservers" -eq "$servercount" ]
         then
         dsh -m $line "touch $SERVIOTICY_INSTALL_DIR/storm_supervisor"
-
     fi
     if [ "$servercount" -ne 1 ]
         then

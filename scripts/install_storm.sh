@@ -21,7 +21,7 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
     zkservers="$zkservers- $line\n"
 done < "$MACHINE_FILES_FOLDER/$MACHINE_FILE_ZK"
 
-nimbushost=$(head -n 1 $MACHINE_FILE_STORM/)
+nimbushost=$(head -n 1 $MACHINE_FILES_FOLDER/$MACHINE_FILE_STORM)
 
 cat $STORM_CONF_TEMPLATE_FILE | \
 perl -pe "s/%PLACEHOLDER_STORM_ZK_SERVERS%/$zkservers/g" | \
