@@ -14,6 +14,7 @@ dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_ES  "cd $ROOT; $SCRIPTS_FOLDER/instal
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_JETTY  "cd $ROOT; $SCRIPTS_FOLDER/install_jdk.sh"
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_ZK "cd $ROOT; $SCRIPTS_FOLDER/install_jdk.sh"
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_KAFKA "cd $ROOT; $SCRIPTS_FOLDER/install_jdk.sh"
+dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_STORM "cd $ROOT; $SCRIPTS_FOLDER/install_jdk.sh"
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_ES  "cd $ROOT; $SCRIPTS_FOLDER/install_es.sh"
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_ES  "cd $ROOT; $SCRIPTS_FOLDER/install_cb_es_transport.sh"
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_ES  "cd $ROOT; $SCRIPTS_FOLDER/start_elasticsearch.sh"
@@ -49,4 +50,30 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
 done < "$MACHINE_FILES_FOLDER/$MACHINE_FILE_KAFKA"
 
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_KAFKA "cd $ROOT; $SCRIPTS_FOLDER/install_kafka.sh"
+
+numservers=0
+servercount=1
+while IFS='' read -r line || [[ -n "$line" ]]; do
+    numservers=$((numservers+1))
+done < "$MACHINE_FILES_FOLDER/$MACHINE_FILE_ZK"
+
+dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_STORM "mkdir -p $SERVIOTICY_INSTALL_DIR"
+while IFS='' read -r line || [[ -n "$line" ]]; do
+    if [ "$servercount" -eq 1 ]
+        then
+            dsh -m $line "touch $SERVIOTICY_INSTALL_DIR/storm_nimbus"
+    fi
+    if [ "$numservers" -eq "$servercount" ]
+        then
+        dsh -m $line "touch $SERVIOTICY_INSTALL_DIR/storm_supervisor"
+
+    fi
+    if [ "$servercount" -ne 1 ]
+        then
+        dsh -m $line "touch $SERVIOTICY_INSTALL_DIR/storm_supervisor"
+    fi
+    servercount=$((servercount+1))
+done < "$MACHINE_FILES_FOLDER/$MACHINE_FILE_STORM"
+
+dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_STORM "cd $ROOT; $SCRIPTS_FOLDER/install_storm.sh"
 
