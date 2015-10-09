@@ -10,7 +10,7 @@ fi
 
 echo "Installing Storm"
 mkdir -p $SERVIOTICY_INSTALL_DIR
-mkdir -p $SERVIOTICY_INSTALL_DIR/storm_dir
+mkdir -p $SERVIOTICY_INSTALL_DIR/storm_data
 cd $SERVIOTICY_INSTALL_DIR
 tar xzf $FILE_REPOSITORY/$STORM_FILE
 folder=`ls -1 | grep storm | head -1`
@@ -27,6 +27,6 @@ cat $STORM_CONF_TEMPLATE_FILE | \
 perl -pe "s/%PLACEHOLDER_STORM_ZK_SERVERS%/$zkservers/g" | \
 perl -pe "s/%PLACEHOLDER_STORM_NIMBUS%/$nimbushost/g" | \
 perl -pe "s|%PLACEHOLDER_STORM_CLASSPATH%|$JDK8_INSTALL_DIR/lib:$STORM_INSTALL_DIR/lib|g" | \
-perl -pe "s|%PLACEHOLDER_STORM_DIR%|$SERVIOTICY_INSTALL_DIR/storm_dir|g" > $STORM_INSTALL_DIR/conf/storm.yaml
+perl -pe "s|%PLACEHOLDER_STORM_DIR%|$SERVIOTICY_INSTALL_DIR/storm_data|g" > $STORM_INSTALL_DIR/conf/storm.yaml
 
 cd $ROOT
