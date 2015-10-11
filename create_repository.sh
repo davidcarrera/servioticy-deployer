@@ -99,9 +99,20 @@ else
 	echo Verified file: $STORM_FILE
 fi
 
+count=`md5sum -c $SECURITY_FILE_MD5 | grep -v OK | wc -l`
+if [ $count -gt 0 ]
+then
+ 	echo Corrupt or missing file found. Downloading $SECURITY_FILE_WGET/$SECURITY_FILE
+	wget -q $SECURITY_FILE_WGET -O $FILE_REPOSITORY/$SECURITY_FILE
+else
+	echo Verified file: $SECURITY_FILE
+fi
+
 git clone $IDM_GIT_URL ./IDM
 cd ./IDM
 git checkout $IDM_GIT_COMMIT
+git pull
+echo IDM pulled
 
 
 cd $ROOT
