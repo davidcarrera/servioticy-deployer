@@ -16,6 +16,8 @@ rm -f $FILE_REPOSITORY/$JETTY_FILE_MD5
 rm -f $FILE_REPOSITORY/$ES_FILE_SHA1
 rm -f $FILE_REPOSITORY/$ZK_FILE_MD5
 rm -f $FILE_REPOSITORY/$KAFKA_FILE_MD5
+rm -f $FILE_REPOSITORY/$STORM_FILE_MD5
+rm -f $FILE_REPOSITORY/$SECURITY_FILE_MD5
 
 wget -q $CB_FILE_WGET/$CB_FILE_MD5 -O $FILE_REPOSITORY/$CB_FILE_MD5.remove
 wget -q $JETTY_FILE_WGET/$JETTY_FILE_MD5 -O $FILE_REPOSITORY/$JETTY_FILE_MD5.remove
@@ -103,7 +105,7 @@ fi
 count=`md5sum -c $SECURITY_FILE_MD5 | grep -v OK | wc -l`
 if [ $count -gt 0 ]
 then
- 	echo Corrupt or missing file found. Downloading $SECURITY_FILE_WGET/$SECURITY_FILE
+ 	echo Corrupt or missing file found. Downloading $SECURITY_FILE_WGET
 	wget -q $SECURITY_FILE_WGET -O $FILE_REPOSITORY/$SECURITY_FILE
 else
 	echo Verified file: $SECURITY_FILE
