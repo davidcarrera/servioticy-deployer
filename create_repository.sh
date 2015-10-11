@@ -99,5 +99,9 @@ else
 	echo Verified file: $STORM_FILE
 fi
 
+git clone $IDM_GIT_URL ./IDM
+cd ./IDM
+git checkout $IDM_GIT_COMMIT
+
 
 cd $ROOT
