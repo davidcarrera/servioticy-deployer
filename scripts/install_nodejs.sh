@@ -12,6 +12,6 @@ echo "Installing node.js"
 mkdir -p $SERVIOTICY_INSTALL_DIR
 cd $SERVIOTICY_INSTALL_DIR
 tar xzf $FILE_REPOSITORY/$NODEJS_FILE
-folder=`ls -1 | grep nodejs | head -1`
+folder=`ls -1 | grep node | head -1`
 ln -s $folder $NODEJS_INSTALL_DIR
 cd $ROOT
