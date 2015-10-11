@@ -26,6 +26,7 @@ echo "$JDK8_MD5 $JDK8_FILE" > $FILE_REPOSITORY/$JDK8_FILE_MD5
 wget -q $ZK_FILE_WGET/$ZK_FILE_MD5 -O $FILE_REPOSITORY/$ZK_FILE_MD5
 echo "$KAFKA_MD5 $KAFKA_FILE" > $FILE_REPOSITORY/$KAFKA_FILE_MD5
 echo "$STORM_MD5 $STORM_FILE" > $FILE_REPOSITORY/$STORM_FILE_MD5
+echo "$NODEJS_MD5 $NODEJS_FILE" > $FILE_REPOSITORY/$NODEJS_FILE_MD5
 echo "$SECURITY_MD5 $SECURITY_FILE" > $FILE_REPOSITORY/$SECURITY_FILE_MD5
 
 perl -pe "s/$/ $CB_FILE/g" $FILE_REPOSITORY/$CB_FILE_MD5.remove | head -1> $FILE_REPOSITORY/$CB_FILE_MD5
@@ -100,6 +101,15 @@ then
 	wget -q $STORM_FILE_WGET/$STORM_FILE -O $FILE_REPOSITORY/$STORM_FILE
 else
 	echo Verified file: $STORM_FILE
+fi
+
+count=`md5sum -c $NODEJS_FILE_MD5 | grep -v OK | wc -l`
+if [ $count -gt 0 ]
+then
+ 	echo Corrupt or missing file found. Downloading $NODEJS_FILE_WGET
+	wget -q $NODEJS_FILE_WGET/$NODEJS_FILE -O $FILE_REPOSITORY/$NODEJS_FILE
+else
+	echo Verified file: $NODEJS_FILE
 fi
 
 count=`md5sum -c $SECURITY_FILE_MD5 | grep -v OK | wc -l`
