@@ -22,8 +22,16 @@ pipurl=$(head -n 1 $MACHINE_FILES_FOLDER/$MACHINE_FILE_SECURITY)
 cat $IDM_PIP_TEMPLATE_FILE | \
 perl -pe "s/%PLACEHOLDER_IDM_PIP_URL%/$pipurl/g" > ./src/main/resources/pip.properties
 
+cp $IDM_DATASOURCE_TEMPLATE_FILE ./src/main/resources/datasource.properties
+
 ./compile_jar.sh
 
 cp ./build/libs/COMPOSEIdentityManagement-0.8.0.jar $IDM_INSTALL_DIR/
 
 cd $ROOT
+
+./scripts/start_mysql.sh
+sleep 5
+./scripts/create_idm_database.sh
+
+
