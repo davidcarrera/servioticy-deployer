@@ -33,5 +33,6 @@ cd $ROOT
 ./scripts/start_mysql.sh
 sleep 5
 ./scripts/create_idm_database.sh
+./scripts/stop_mysql.sh
 
 
