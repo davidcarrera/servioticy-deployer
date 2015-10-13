@@ -20,10 +20,10 @@ cat $MYSQL_CONF_TEMPLATE_FILE | \
 perl -pe "s/%PLACEHOLDER_MYSQL_USER%/$USERNAME/g" | \
 perl -pe "s|%PLACEHOLDER_MYSQL_BASEDIR%|$MYSQL_INSTALL_DIR|g" | \
 perl -pe "s|%PLACEHOLDER_MYSQL_DATADIR%|$MYSQL_DATA_DIR|g" | \
-perl -pe "s|%PLACEHOLDER_MYSQL_SOCKET%|$SERVIOTICY_INSTALL_DIR/mysql.sock|g" > $STORM_INSTALL_DIR/mysql.cnf
+perl -pe "s|%PLACEHOLDER_MYSQL_SOCKET%|$SERVIOTICY_INSTALL_DIR/mysql.sock|g" > $MYSQL_INSTALL_DIR/my.cnf
 
 cd $MYSQL_INSTALL_DIR/
-./scripts/mysql_install_db --defaults-file=/scratch/hdd/villalba/servioticy/mysql/mysql.cnf \
+./scripts/mysql_install_db --defaults-file=$MYSQL_INSTALL_DIR/my.cnf \
 --basedir=$MYSQL_INSTALL_DIR \
 --datadir=$MYSQL_DATA_DIR \
 --socket=$SERVIOTICY_INSTALL_DIR/mysql.sock
