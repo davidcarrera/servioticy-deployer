@@ -150,24 +150,6 @@ git checkout $PDP_GIT_REVISION
 git pull
 echo PDP pulled
 
-count=`md5sum -c $API_FILE_MD5 | grep -v OK | wc -l`
-if [ $count -gt 0 ]
-then
- 	echo Corrupt or missing file found. Downloading $API_FILE_WGET
-	wget -q $API_FILE_WGET -O $FILE_REPOSITORY/$API_FILE
-else
-	echo Verified file: $API_FILE
-fi
-
-count=`md5sum -c $DISPATCHER_FILE_MD5 | grep -v OK | wc -l`
-if [ $count -gt 0 ]
-then
- 	echo Corrupt or missing file found. Downloading $DISPATCHER_FILE_WGET/$DISPATCHER_FILE
-	wget -q $DISPATCHER_FILE_WGET -O $FILE_REPOSITORY/$DISPATCHER_FILE
-else
-	echo Verified file: $DISPATCHER_FILE
-fi
-
 git clone $SERVIOTICY_GIT_URL ./servioticy
 cd ./servioticy
 git checkout $SERVIOTICY_GIT_REVISION
