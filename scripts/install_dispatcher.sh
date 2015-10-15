@@ -16,7 +16,7 @@ mkdir -p $DISPATCHER_INSTALL_DIR
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_ZK  "cd $ROOT; $SCRIPTS_FOLDER/start_zk.sh"
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_KAFKA  "cd $ROOT; $SCRIPTS_FOLDER/start_kafka.sh"
 
-./scripts/create_topics.sh
+dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_KAFKA  "cd $ROOT; ./scripts/create_topics.sh"
 
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_KAFKA  "cd $ROOT; $SCRIPTS_FOLDER/stop_kafka.sh"
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_ZK  "cd $ROOT; $SCRIPTS_FOLDER/stop_zk.sh"
