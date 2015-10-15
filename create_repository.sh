@@ -132,7 +132,7 @@ else
 	echo Verified file: $MYSQL_FILE
 fi
 
-git clone $IDM_GIT_URL ./id,
+git clone $IDM_GIT_URL ./idm
 cd ./idm
 git checkout $IDM_GIT_REVISION
 git pull
