@@ -25,12 +25,12 @@ cd $FILE_REPOSITORY/servioticy
 
 kafka_servers=""
 while IFS='' read -r line || [[ -n "$line" ]]; do
-    $kafka_servers="$kafka_servers$line:9092 "
+    kafka_servers="$kafka_servers$line:9092 "
 done < "$MACHINE_FILES_FOLDER/$MACHINE_FILE_KAFKA"
 
 zk_servers=""
 while IFS='' read -r line || [[ -n "$line" ]]; do
-    $zk_servers="$zk_servers<address>$line:2181</address>"
+    zk_servers="$zk_servers<address>$line:2181</address>"
 done < "$MACHINE_FILES_FOLDER/$MACHINE_FILE_ZK"
 
 cb_server=$(head -n 1 $MACHINE_FILES_FOLDER/$MACHINE_FILE_COUCHBASE)
