@@ -11,7 +11,7 @@ fi
 echo "Installing PDP"
 mkdir -p $SERVIOTICY_INSTALL_DIR
 
-cd $FILE_REPOSITORY/pdp/resources/main/lib/
+cd $FILE_REPOSITORY/pdp/src/main/resources/lib/
 mvn install:install-file -Dfile=IoTP-0.1.0.jar -DpomFile=pom.xml
 
 cd $FILE_REPOSITORY/pdp/
