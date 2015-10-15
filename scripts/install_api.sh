@@ -13,6 +13,7 @@ mkdir -p $SERVIOTICY_INSTALL_DIR
 mkdir -p $DISPATCHER_INSTALL_DIR
 cd $FILE_REPOSITORY/servioticy
 
+servercount=1
 numservers=0
 cb_servers=""
 while IFS='' read -r line || [[ -n "$line" ]]; do
@@ -28,6 +29,7 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
     fi
 done < "$MACHINE_FILES_FOLDER/$MACHINE_FILE_CB"
 
+servercount=1
 numservers=0
 es_servers=""
 while IFS='' read -r line || [[ -n "$line" ]]; do
