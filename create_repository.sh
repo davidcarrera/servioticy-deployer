@@ -19,6 +19,9 @@ rm -f $FILE_REPOSITORY/$KAFKA_FILE_MD5
 rm -f $FILE_REPOSITORY/$STORM_FILE_MD5
 rm -f $FILE_REPOSITORY/$SECURITY_FILE_MD5
 rm -f $FILE_REPOSITORY/$MYSQL_FILE_MD5
+rm -f $FILE_REPOSITORY/$API_FILE_MD
+rm -f $FILE_REPOSITORY/$DISPATCHER_FILE_MD5
+
 
 wget -q $CB_FILE_WGET/$CB_FILE_MD5 -O $FILE_REPOSITORY/$CB_FILE_MD5.remove
 wget -q $JETTY_FILE_WGET/$JETTY_FILE_MD5 -O $FILE_REPOSITORY/$JETTY_FILE_MD5.remove
@@ -30,6 +33,8 @@ echo "$STORM_MD5 $STORM_FILE" > $FILE_REPOSITORY/$STORM_FILE_MD5
 echo "$NODEJS_MD5 $NODEJS_FILE" > $FILE_REPOSITORY/$NODEJS_FILE_MD5
 echo "$SECURITY_MD5 $SECURITY_FILE" > $FILE_REPOSITORY/$SECURITY_FILE_MD5
 echo "$MYSQL_MD5 $MYSQL_FILE" > $FILE_REPOSITORY/$MYSQL_FILE_MD5
+echo "$API_MD5 $API_FILE" > $FILE_REPOSITORY/$API_FILE_MD5
+echo "$DISPATCHER_MD5 $DISPATCHER_FILE" > $FILE_REPOSITORY/$DISPATCHER_FILE_MD5
 
 perl -pe "s/$/ $CB_FILE/g" $FILE_REPOSITORY/$CB_FILE_MD5.remove | head -1> $FILE_REPOSITORY/$CB_FILE_MD5
 perl -pe "s/$/ $JETTY_FILE/g" $FILE_REPOSITORY/$JETTY_FILE_MD5.remove | head -1> $FILE_REPOSITORY/$JETTY_FILE_MD5
@@ -132,11 +137,47 @@ else
 	echo Verified file: $MYSQL_FILE
 fi
 
-git clone $IDM_GIT_URL ./IDM
-cd ./IDM
-git checkout $IDM_GIT_COMMIT
+git clone $IDM_GIT_URL ./id,
+cd ./idm
+git checkout $IDM_GIT_REVISION
 git pull
 echo IDM pulled
 
+git clone $UAA_GIT_URL ./uaa
+cd ./uaa
+git checkout $UAA_GIT_REVISION
+git pull
+echo UAA pulled
+
+git clone $PDP_GIT_URL ./pdp
+cd ./pdp
+git checkout $PDP_GIT_REVISION
+git pull
+echo PDP pulled
+
+count=`md5sum -c $API_FILE_MD5 | grep -v OK | wc -l`
+if [ $count -gt 0 ]
+then
+ 	echo Corrupt or missing file found. Downloading $API_FILE_WGET
+	wget -q $API_FILE_WGET -O $FILE_REPOSITORY/$API_FILE
+else
+	echo Verified file: $API_FILE
+fi
+
+count=`md5sum -c $DISPATCHER_FILE_MD5 | grep -v OK | wc -l`
+if [ $count -gt 0 ]
+then
+ 	echo Corrupt or missing file found. Downloading $DISPATCHER_FILE_WGET/$DISPATCHER_FILE
+	wget -q $DISPATCHER_FILE_WGET -O $FILE_REPOSITORY/$DISPATCHER_FILE
+else
+	echo Verified file: $DISPATCHER_FILE
+fi
+
+git clone $SERVIOTICY_GIT_URL ./servioticy
+cd ./servioticy
+git checkout $SERVIOTICY_GIT_REVISION
+git pull
+git submodule update --init --recursive
+echo Servioticy pulled
 
 cd $ROOT
