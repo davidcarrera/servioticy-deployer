@@ -9,7 +9,7 @@ fi
 . $ROOT/env.sh
 
 cd $KAFKA_INSTALL_DIR
-$zk_machine=$(head -n 1 $MACHINE_FILE_ZK)
+$zk_machine=$(head -n 1 MACHINE_FILES_FOLDER/$MACHINE_FILE_ZK)
 
 ./bin/kafka-topics.sh --zookeeper $zk_machine:2181 --create --topic reputation --partitions 8 --replication-factor 1 --config retention.ms=120000
 ./bin/kafka-topics.sh --zookeeper $zk_machine:2181 --create --topic updates --partitions 8 --replication-factor 1 --config retention.ms=120000
