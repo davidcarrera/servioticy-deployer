@@ -14,7 +14,7 @@ mkdir -p $SERVIOTICY_INSTALL_DIR
 cp -R $FILE_REPOSITORY/uaa $UAA_INSTALL_DIR/
 cd $UAA_INSTALL_DIR/
 
-maven install
+mvn install
 
 cd $ROOT
 
