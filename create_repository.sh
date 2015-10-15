@@ -137,18 +137,21 @@ cd ./idm
 git checkout $IDM_GIT_REVISION
 git pull
 echo IDM pulled
+cd $ROOT
 
 git clone $UAA_GIT_URL ./uaa
 cd ./uaa
 git checkout $UAA_GIT_REVISION
 git pull
 echo UAA pulled
+cd $ROOT
 
 git clone $PDP_GIT_URL ./pdp
 cd ./pdp
 git checkout $PDP_GIT_REVISION
 git pull
 echo PDP pulled
+cd $ROOT
 
 git clone $SERVIOTICY_GIT_URL ./servioticy
 cd ./servioticy
