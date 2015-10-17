@@ -14,7 +14,7 @@ echo Starting Dispatcher...
 cd $STORM_INSTALL_DIR/bin
 python ./storm kill dispatcher
 
-until python storm jar $DISPATCHER_INSTALL_DIR/dispatcher-0.4.3-security-SNAPSHOT-jar-with-dependencies.jar com.servioticy.dispatcher.DispatcherTopology -t dispatcher -f $DISPATCHER_INSTALL_DIR/dispatcher.xml
+until python storm jar $DISPATCHER_INSTALL_DIR/DISPATCHER_JAR com.servioticy.dispatcher.DispatcherTopology -t dispatcher -f $DISPATCHER_INSTALL_DIR/dispatcher.xml
 do
   echo "Trying again"
 done
