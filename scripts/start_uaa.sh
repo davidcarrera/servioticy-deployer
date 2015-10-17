@@ -10,7 +10,7 @@ fi
 
 cd $UAA_INSTALL_DIR/
 
-maven tomcat7:run -Dmaven.tomcat.port=8081
+mvn tomcat7:run -Dmaven.tomcat.port=8081
 
 cd $ROOT
 
