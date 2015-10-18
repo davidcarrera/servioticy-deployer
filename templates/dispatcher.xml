@@ -4,13 +4,13 @@
     <benchmark>false</benchmark>
     <benchResultsDir>~</benchResultsDir>
     <updatesFeedback>
-        <address>%PLACEHOLDER_DISPATCHER_FEEDBACK$</address>
+        <address>%PLACEHOLDER_DISPATCHER_FEEDBACK%</address>
     </updatesFeedback>
     <spouts>
         <updates>
             <name>updates-secure</name>
             <addresses>
-                %PLACEHOLDER_DISPATCHER_ZK$
+                %PLACEHOLDER_DISPATCHER_ZK%
             </addresses>
         </updates>
     </spouts>
