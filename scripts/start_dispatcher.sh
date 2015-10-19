@@ -13,7 +13,7 @@ echo Starting Dispatcher...
 
 cd $DISPATCHER_INSTALL_DIR
 
-python ./storm kill dispatcher
+python $STORM_INSTALL_DIR/bin/storm kill dispatcher
 
 until python $STORM_INSTALL_DIR/bin/storm jar ./$DISPATCHER_JAR com.servioticy.dispatcher.DispatcherTopology -t dispatcher -f ./dispatcher.xml
 do
