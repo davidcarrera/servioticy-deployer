@@ -48,7 +48,7 @@ done < "$MACHINE_FILES_FOLDER/$MACHINE_FILE_ES"
 idm_url=$(head -n 1 $MACHINE_FILES_FOLDER/$MACHINE_FILE_IDM)
 
 cat $API_CONFIG_TEMPLATE_FILE | \
-perl -pe "s/%PLACEHOLDER_API_COUCHBASE%/$cb_servers/g" | \
+perl -pe "s|%PLACEHOLDER_API_COUCHBASE%|$cb_servers|g" | \
 perl -pe "s/%PLACEHOLDER_API_ELASTICSEARCH%/$es_servers/g" | \
 perl -pe "s/%PLACEHOLDER_API_IDM_HOST%/$idm_url/g" > ./servioticy-api-private/src/main/resources/config.properties
 
