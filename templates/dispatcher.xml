@@ -8,7 +8,7 @@
     </updatesFeedback>
     <spouts>
         <updates>
-            <name>updates-secure</name>
+            <name>updates</name>
             <addresses>
                 %PLACEHOLDER_DISPATCHER_ZK%
             </addresses>
