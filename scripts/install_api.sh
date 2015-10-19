@@ -25,7 +25,7 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
     if [ "$numservers" -ne  "$servercount" ]
         then
             servercount=$((servercount+1))
-            cb_servers="$cb_servers,"
+            cb_servers="$cb_servers;"
     fi
 done < "$MACHINE_FILES_FOLDER/$MACHINE_FILE_CB"
 
