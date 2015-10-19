@@ -21,7 +21,7 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
 done < "$MACHINE_FILES_FOLDER/$MACHINE_FILE_CB"
 
 while IFS='' read -r line || [[ -n "$line" ]]; do
-    cb_servers="$cb_servers$line"
+    cb_servers="$cb_servershttp://$line:8091/pools"
     if [ "$numservers" -ne  "$servercount" ]
         then
             servercount=$((servercount+1))
