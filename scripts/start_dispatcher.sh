@@ -11,14 +11,15 @@ fi
 
 echo Starting Dispatcher...
 
-cd $STORM_INSTALL_DIR/bin
+cd $DISPATCHER_INSTALL_DIR
+
 python ./storm kill dispatcher
 
-until python storm jar $DISPATCHER_INSTALL_DIR/DISPATCHER_JAR com.servioticy.dispatcher.DispatcherTopology -t dispatcher -f $DISPATCHER_INSTALL_DIR/dispatcher.xml
+until python $STORM_INSTALL_DIR/bin/storm jar ./$DISPATCHER_JAR com.servioticy.dispatcher.DispatcherTopology -t dispatcher -f ./dispatcher.xml
 do
   echo "Trying again"
 done
 
-python ./storm rebalance dispatcher-secure -n 4 -e updates=48 -e prepare=48 -e streamdispatcher=48 -e streamprocessor=48 -e subretriever=48
+python $STORM_INSTALL_DIR/bin/storm rebalance dispatcher -n 4 -e updates=48 -e prepare=48 -e streamdispatcher=48 -e streamprocessor=48 -e subretriever=48
 
 cd $ROOT
