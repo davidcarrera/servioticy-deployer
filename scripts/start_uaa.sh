@@ -10,7 +10,7 @@ fi
 
 cd $UAA_INSTALL_DIR/
 
-mvn tomcat7:run -Dmaven.tomcat.port=8081
+./gradlew run
 
 cd $ROOT
 
