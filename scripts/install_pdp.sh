@@ -16,6 +16,7 @@ cd $FILE_REPOSITORY/pdp/src/main/resources/lib/
 #mvn install:install-file -Dfile=IoTP-0.1.0.jar -DpomFile=pom.xml
 
 cd $FILE_REPOSITORY/pdp/
+gradle clean
 gradle install
 
 cd $ROOT
