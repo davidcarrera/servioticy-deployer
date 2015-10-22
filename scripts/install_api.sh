@@ -10,7 +10,6 @@ fi
 
 echo "Installing Servioticy"
 mkdir -p $SERVIOTICY_INSTALL_DIR
-mkdir -p $DISPATCHER_INSTALL_DIR
 cd $FILE_REPOSITORY/servioticy
 
 servercount=1
