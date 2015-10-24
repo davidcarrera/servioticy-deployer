@@ -10,6 +10,12 @@ fi
 
 echo "Installing Servioticy"
 mkdir -p $SERVIOTICY_INSTALL_DIR
+
+cd $FILE_REPOSITORY/servioticy/servioticy-dispatcher
+
+chmod +x ./unmanaged-dependencies.sh
+./unmanaged-dependencies.sh
+
 cd $FILE_REPOSITORY/servioticy
 
 servercount=1
