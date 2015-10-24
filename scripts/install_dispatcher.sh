@@ -22,6 +22,11 @@ dsh -m $kafka_head "cd $ROOT; ./scripts/create_topics.sh"
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_KAFKA  "cd $ROOT; $SCRIPTS_FOLDER/stop_kafka.sh"
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_ZK  "cd $ROOT; $SCRIPTS_FOLDER/stop_zk.sh"
 
+cd $FILE_REPOSITORY/servioticy/servioticy-dispatcher
+
+chmod +x ./unmanaged-dependencies.sh
+./unmanaged-dependencies.sh
+
 cd $FILE_REPOSITORY/servioticy
 
 kafka_servers=""
