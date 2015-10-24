@@ -11,7 +11,7 @@ fi
 echo "Installing Maven"
 mkdir -p $SERVIOTICY_INSTALL_DIR
 cd $SERVIOTICY_INSTALL_DIR
-unzip $FILE_REPOSITORY/$MAVEN_FILE
+tar xzf $FILE_REPOSITORY/$MAVEN_FILE
 folder=`ls -1 | grep maven | head -1`
 ln -s $folder $MAVEN_INSTALL_DIR
 cd $ROOT
