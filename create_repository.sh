@@ -30,6 +30,8 @@ echo "$STORM_MD5 $STORM_FILE" > $FILE_REPOSITORY/$STORM_FILE_MD5
 echo "$NODEJS_MD5 $NODEJS_FILE" > $FILE_REPOSITORY/$NODEJS_FILE_MD5
 echo "$SECURITY_MD5 $SECURITY_FILE" > $FILE_REPOSITORY/$SECURITY_FILE_MD5
 echo "$MYSQL_MD5 $MYSQL_FILE" > $FILE_REPOSITORY/$MYSQL_FILE_MD5
+echo "$GRADLE_MD5 $GRADLE_FILE" > $FILE_REPOSITORY/$GRADLE_FILE_MD5
+echo "$MAVEN_MD5 $MAVEN_FILE" > $FILE_REPOSITORY/$MAVEN_FILE_MD5
 
 perl -pe "s/$/ $CB_FILE/g" $FILE_REPOSITORY/$CB_FILE_MD5.remove | head -1> $FILE_REPOSITORY/$CB_FILE_MD5
 perl -pe "s/$/ $JETTY_FILE/g" $FILE_REPOSITORY/$JETTY_FILE_MD5.remove | head -1> $FILE_REPOSITORY/$JETTY_FILE_MD5
@@ -130,6 +132,24 @@ then
 	wget -q $MYSQL_FILE_WGET/$MYSQL_FILE -O $FILE_REPOSITORY/$MYSQL_FILE
 else
 	echo Verified file: $MYSQL_FILE
+fi
+
+count=`md5sum -c $GRADLE_FILE_MD5 | grep -v OK | wc -l`
+if [ $count -gt 0 ]
+then
+ 	echo Corrupt or missing file found. Downloading $GRADLE_FILE_WGET/$GRADLE_FILE
+	wget -q $GRADLE_FILE_WGET/$GRADLE_FILE -O $FILE_REPOSITORY/$GRADLE_FILE
+else
+	echo Verified file: $GRADLE_FILE
+fi
+
+count=`md5sum -c $MAVEN_FILE_MD5 | grep -v OK | wc -l`
+if [ $count -gt 0 ]
+then
+ 	echo Corrupt or missing file found. Downloading $MAVEN_FILE_WGET/$MAVEN_FILE
+	wget -q $MAVEN_FILE_WGET/$MAVEN_FILE -O $FILE_REPOSITORY/$MAVEN_FILE
+else
+	echo Verified file: $MAVEN_FILE
 fi
 
 git clone $IDM_GIT_URL ./idm

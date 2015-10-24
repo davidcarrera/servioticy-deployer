@@ -14,9 +14,11 @@ dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_JETTY  "cd $ROOT; $SCRIPTS_FOLDER/ins
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_ZK "cd $ROOT; $SCRIPTS_FOLDER/install_jdk.sh"
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_KAFKA "cd $ROOT; $SCRIPTS_FOLDER/install_jdk.sh"
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_STORM "cd $ROOT; $SCRIPTS_FOLDER/install_jdk.sh"
+dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_STORM "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_gradle.sh\""
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_STORM "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_pdp.sh\""
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_IDM "cd $ROOT; $SCRIPTS_FOLDER/install_jdk.sh"
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_JETTY  "cd $ROOT; $SCRIPTS_FOLDER/install_jetty.sh"
+dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_JETTY "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_gradle.sh\""
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_JETTY "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_pdp.sh\""
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_ES  "cd $ROOT; $SCRIPTS_FOLDER/install_es.sh"
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_ES  "cd $ROOT; $SCRIPTS_FOLDER/install_cb_es_transport.sh"
@@ -81,12 +83,14 @@ dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_STORM "cd $ROOT; $SCRIPTS_FOLDER/inst
 
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_SECURITY "cd $ROOT; $SCRIPTS_FOLDER/install_nodejs.sh"
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_SECURITY "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_security.sh\""
+dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_IDM "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_gradle.sh\""
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_IDM "cd $ROOT; $SCRIPTS_FOLDER/install_mysql.sh"
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_IDM "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_uaa.sh\""
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_IDM "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_idm.sh\""
 
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_JETTY "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_api.sh\""
 
+dsh -m $dispatcher_master "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_maven.sh\""
 dispatcher_master=$(head -n 1 $MACHINE_FILES_FOLDER/$MACHINE_FILE_STORM)
 dsh -m $dispatcher_master "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_dispatcher.sh\""
 
