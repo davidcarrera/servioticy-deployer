@@ -88,10 +88,11 @@ dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_IDM "cd $ROOT; $SCRIPTS_FOLDER/instal
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_IDM "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_uaa.sh\""
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_IDM "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_idm.sh\""
 
+dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_JETTY "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_maven.sh\""
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_JETTY "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_api.sh\""
 
-dsh -m $dispatcher_master "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_maven.sh\""
 dispatcher_master=$(head -n 1 $MACHINE_FILES_FOLDER/$MACHINE_FILE_STORM)
+dsh -m $dispatcher_master "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_maven.sh\""
 dsh -m $dispatcher_master "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_dispatcher.sh\""
 
 
