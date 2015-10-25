@@ -10,7 +10,7 @@ fi
 
 cd $UAA_INSTALL_DIR/
 
-nohup ./gradlew run `</dev/null` > $SERVIOTICY_INSTALL_DIR/idm.out 2>&1 &
+nohup ./gradlew run `</dev/null` > $SERVIOTICY_INSTALL_DIR/uaa.out 2>&1 &
 
 cd $ROOT
 

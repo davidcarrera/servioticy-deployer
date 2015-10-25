@@ -19,10 +19,10 @@ cp $IDM_APPLICATION_TEMPLATE_FILE ./src/main/resources/application.properties
 pipurl=$(head -n 1 $MACHINE_FILES_FOLDER/$MACHINE_FILE_SECURITY)
 
 cat $IDM_PIP_TEMPLATE_FILE | \
-perl -pe "s/%PLACEHOLDER_IDM_PIP_URL%/$pipurl/g" > ./src/main/resources/pip.properties
+perl -pe "s|%PLACEHOLDER_IDM_PIP_URL%|http://$pipurl|g" > ./src/main/resources/pip.properties
 
-cp $IDM_DATASOURCE_TEMPLATE_FILE ./src/main/resources/datasource.properties
-cp $IDM_UAA_TEMPLATE_FILE ./src/main/resources/uaa.properties
+#cp $IDM_DATASOURCE_TEMPLATE_FILE ./src/main/resources/datasource.properties
+#cp $IDM_UAA_TEMPLATE_FILE ./src/main/resources/uaa.properties
 
 ./compile_jar.sh
 
