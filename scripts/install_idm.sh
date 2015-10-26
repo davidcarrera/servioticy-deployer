@@ -20,10 +20,10 @@ pipurl=$(head -n 1 $MACHINE_FILES_FOLDER/$MACHINE_FILE_SECURITY)
 jettyurl=$(head -n 1 $MACHINE_FILES_FOLDER/$MACHINE_FILE_JETTY)
 
 cat $IDM_PIP_TEMPLATE_FILE | \
-perl -pe "s|%PLACEHOLDER_IDM_PIP_URL%|http://$jettyurl:8080/private/security/|g" > ./src/main/resources/pip.properties
+perl -pe "s|%PLACEHOLDER_IDM_SERVIOTICY_PRIVATE_URL%|http://$jettyurl:8080/private/security/|g" > ./src/main/resources/servioticy.properties
 
 cat $IDM_SERVIOTICY_TEMPLATE_FILE | \
-perl -pe "s|%PLACEHOLDER_IDM_PIP_URL%|http://$pipurl|g" > ./src/main/resources/servioticy.properties
+perl -pe "s|%PLACEHOLDER_IDM_PIP_URL%|http://$pipurl|g" > ./src/main/resources/pip.properties
 
 #cp $IDM_DATASOURCE_TEMPLATE_FILE ./src/main/resources/datasource.properties
 #cp $IDM_UAA_TEMPLATE_FILE ./src/main/resources/uaa.properties
