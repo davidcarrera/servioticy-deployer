@@ -1,0 +1,20 @@
+---
+  spring_profiles: "mysql,default"
+  database:
+    password: root
+    driverClassName: com.mysql.jdbc.Driver
+    username: root
+    url: "jdbc:mysql://localhost:3307/uaadb"
+  oauth:
+    user:
+      authorities:
+        - openid
+        - scim.me
+        - cloud_controller.read
+        - cloud_controller.write
+        - cloud_controller_service_permissions.read
+        - password.write
+        - scim.userids
+        - uaa.user
+        - approvals.me
+        - oauth.approvals
