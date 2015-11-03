@@ -26,7 +26,7 @@ cat $IDM_SERVIOTICY_TEMPLATE_FILE | \
 perl -pe "s|%PLACEHOLDER_IDM_SERVIOTICY_PRIVATE_URL%|http://$jettyurl:8080/private/security/|g" > ./src/main/resources/servioticy.properties
 
 cp $IDM_DATASOURCE_TEMPLATE_FILE ./src/main/resources/datasource.properties
-#cp $IDM_UAA_TEMPLATE_FILE ./src/main/resources/uaa.properties
+cp $IDM_UAA_TEMPLATE_FILE ./src/main/resources/uaa.properties
 
 ./compile_jar.sh
 
