@@ -50,6 +50,22 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
     fi
 done < "$MACHINE_FILES_FOLDER/$MACHINE_FILE_ES"
 
+servercount=1
+numservers=0
+kafka_servers=""
+while IFS='' read -r line || [[ -n "$line" ]]; do
+    numservers=$((numservers+1))
+done < "$MACHINE_FILES_FOLDER/$MACHINE_FILE_ES"
+
+while IFS='' read -r line || [[ -n "$line" ]]; do
+    kafka_servers="$kafka_servers$line:9092"
+    if [ "$numservers" -ne "$servercount" ]
+        then
+            servercount=$((servercount+1))
+            kafka_servers="$kafka_servers "
+    fi
+done < "$MACHINE_FILES_FOLDER/$MACHINE_FILE_KAFKA"
+
 idm_url=$(head -n 1 $MACHINE_FILES_FOLDER/$MACHINE_FILE_IDM)
 
 cat $API_CONFIG_TEMPLATE_FILE | \
