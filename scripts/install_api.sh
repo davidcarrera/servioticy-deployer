@@ -55,7 +55,7 @@ numservers=0
 kafka_servers=""
 while IFS='' read -r line || [[ -n "$line" ]]; do
     numservers=$((numservers+1))
-done < "$MACHINE_FILES_FOLDER/$MACHINE_FILE_ES"
+done < "$MACHINE_FILES_FOLDER/$MACHINE_FILE_KAFKA"
 
 while IFS='' read -r line || [[ -n "$line" ]]; do
     kafka_servers="$kafka_servers$line:9092"
