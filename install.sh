@@ -81,12 +81,12 @@ done < "$MACHINE_FILES_FOLDER/$MACHINE_FILE_STORM"
 
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_STORM "cd $ROOT; $SCRIPTS_FOLDER/install_storm.sh"
 
-dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_SECURITY "cd $ROOT; $SCRIPTS_FOLDER/install_nodejs.sh"
-dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_SECURITY "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_security.sh\""
-dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_IDM "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_gradle.sh\""
-dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_IDM "cd $ROOT; $SCRIPTS_FOLDER/install_mysql.sh"
-dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_IDM "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_uaa.sh\""
-dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_IDM "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_idm.sh\""
+#dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_SECURITY "cd $ROOT; $SCRIPTS_FOLDER/install_nodejs.sh"
+#dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_SECURITY "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_security.sh\""
+#dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_IDM "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_gradle.sh\""
+#dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_IDM "cd $ROOT; $SCRIPTS_FOLDER/install_mysql.sh"
+#dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_IDM "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_uaa.sh\""
+#dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_IDM "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_idm.sh\""
 
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_JETTY "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_maven.sh\""
 dsh -f $MACHINE_FILES_FOLDER/$MACHINE_FILE_JETTY "bash -ic \"cd $ROOT; $SCRIPTS_FOLDER/install_api.sh\""
