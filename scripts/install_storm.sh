@@ -11,6 +11,8 @@ fi
 echo "Installing Storm"
 mkdir -p $SERVIOTICY_INSTALL_DIR
 mkdir -p $SERVIOTICY_INSTALL_DIR/storm_data
+mkdir -p $DISPATCHER_BENCHMARK_DIR
+
 cd $SERVIOTICY_INSTALL_DIR
 tar xzf $FILE_REPOSITORY/$STORM_FILE
 folder=`ls -1 | grep storm | head -1`

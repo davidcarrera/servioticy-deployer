@@ -62,6 +62,7 @@ cat $DISPATCHER_CONF_TEMPLATE_FILE | \
 perl -pe "s/%PLACEHOLDER_DISPATCHER_FEEDBACK%/$kafka_servers/g" | \
 perl -pe "s|%PLACEHOLDER_DISPATCHER_ZK%|$zk_servers|g" | \
 perl -pe "s/%PLACEHOLDER_DISPATCHER_COUCHBASE%/$cb_server/g" | \
+perl -pe "s|%PLACEHOLDER_DISPATCHER_BENCHMARK_DIR%|$DISPATCHER_BENCHMARK_DIR|g" | \
 perl -pe "s|%PLACEHOLDER_DISPATCHER_API_URL%|http://$apiurl:8080/|g" > $DISPATCHER_INSTALL_DIR/dispatcher.xml
 
 cd $ROOT

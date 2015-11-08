@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <context>
     <servioticyAPI>%PLACEHOLDER_DISPATCHER_API_URL%</servioticyAPI>
-    <benchmark>false</benchmark>
-    <benchResultsDir>~</benchResultsDir>
+    <benchmark>true</benchmark>
+    <benchResultsDir>%PLACEHOLDER_DISPATCHER_BENCHMARK_DIR%</benchResultsDir>
     <updatesFeedback>
         <address>%PLACEHOLDER_DISPATCHER_FEEDBACK%</address>
     </updatesFeedback>
