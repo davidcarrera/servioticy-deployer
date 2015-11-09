@@ -31,4 +31,7 @@ perl -pe "s/%PLACEHOLDER_STORM_NIMBUS%/$nimbushost/g" | \
 perl -pe "s|%PLACEHOLDER_STORM_CLASSPATH%|$JDK8_INSTALL_DIR/lib:$STORM_INSTALL_DIR/lib|g" | \
 perl -pe "s|%PLACEHOLDER_STORM_DIR%|$SERVIOTICY_INSTALL_DIR/storm_data|g" > $STORM_INSTALL_DIR/conf/storm.yaml
 
+cd $STORM_INSTALL_DIR
+mvn  -Dmaven.test.skip=true clean install
+
 cd $ROOT
